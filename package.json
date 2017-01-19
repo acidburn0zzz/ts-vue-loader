@@ -1,0 +1,22 @@
+{
+  "name": "vue-ts-loader",
+  "version": "0.1.0",
+  "description": "VueJS Typescript loader to enable HMR when using Typescript",
+  "main": "index.js",
+  "scripts": {
+    "test": "ava",
+    "watch": "ava --watch"
+  }, 
+  "author": {
+    "name": "Jonathan Boyer",
+    "email": "contact@grafikart.fr",
+    "url": "grafikart.fr"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "ava": "^0.17.0"
+  },
+  "dependencies": {
+    "hash-sum": "^1.0.2"
+  }
+}
