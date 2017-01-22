@@ -12,23 +12,26 @@ module.exports = function (content) {
   if (!isProduction) {
     var filePath = this.resourcePath
     var moduleId = genId(filePath)
+    var regex = new RegExp(/([a-z]+) = __decorate\(\[\s+Component/gi)
+    var matches = regex.exec(content)
 
-    // TODO : Extract component name from the code (fix failing test)
-
-    content += `
-      if (module.hot) {
-        const api = require('vue-hot-reload-api')
-        const Vue = require('vue')
-        api.install(Vue, false)
-        module.hot.accept()
-        
-        if (!module.hot.data) {
-          api.createRecord('${moduleId}', HelloWord)
-        } else {
-          api.reload('${moduleId}', HelloWord.options)
+    if (matches !== null) {
+      content += `
+        if (module.hot) {
+          const api = require('vue-hot-reload-api')
+          const Vue = require('vue')
+          api.install(Vue, false)
+          module.hot.accept()
+          
+          if (!module.hot.data) {
+            api.createRecord('${moduleId}', ${matches[1]})
+          } else {
+            api.reload('${moduleId}', ${matches[1]}.options)
+          }
         }
-      }
-    `
+      `
+    }
+
   }
 
   return content
