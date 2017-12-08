@@ -9,7 +9,7 @@ let vueComponent = `
     ], DemoComponent.prototype, "name", void 0);
     DemoComponent = __decorate([
         Component({
-            template: "\n    <div>\n      <h1>Hello {{ name }} how are you </h1>\n      <p @click=\"greet\">This componentes use {{ lang }} !</p>\n    </div>"
+            template: "\\n    <div>\\n      <h1>Hello {{ name }} how are you </h1>\\n      <p @click=\\"greet\\">This component uses {{ lang }} !</p>\\n    </div>"
         })
     ], DemoComponent);
     export default DemoComponent;
@@ -32,12 +32,22 @@ let notVueComponent = `
 let fakeLoaderContext = {
   cacheable () { },
   minimize: false,
-  resourcePath: 'fake'
+  resourcePath: 'fake',
+  emitError (e) {
+    throw new Error(e)
+  }
 }
 
 test('loader detects Vue Component', t => {
   let content = loader.bind(fakeLoaderContext)(vueComponent)
-  t.regex(content, /api\.reload\(\'[0-9a-z]+\', DemoComponent\.options\)/g)
+  t.regex(content, /hotApi\.createRecord\('data-v-\w+', DemoComponent\)/g)
+  t.regex(content, /_c\('div',\[_c\('h1'/g)
+})
+
+test('HMR is not added in production', t => {
+  let content = loader.bind(Object.assign({}, fakeLoaderContext, {minimize: true}))(vueComponent)
+  t.notRegex(content, /hotApi\.createRecord\('data-v-\w+', DemoComponent\)/g)
+  t.regex(content, /_c\('div',\[_c\('h1'/g)
 })
 
 test('loader does nothing', t => {

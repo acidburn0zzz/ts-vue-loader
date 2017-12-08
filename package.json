@@ -1,12 +1,15 @@
 {
-  "name": "vue-ts-loader",
-  "version": "0.1.0",
-  "description": "VueJS Typescript loader to enable HMR when using Typescript",
+  "name": "ts-vue-loader",
+  "version": "1.0.0",
+  "engines": {
+    "node": ">=8.0"
+  },
+  "description": "VueJS Typescript loader to enable HMR and VirtualDom when using Typescript",
   "main": "index.js",
   "scripts": {
     "test": "ava",
     "watch": "ava --watch"
-  }, 
+  },
   "author": {
     "name": "Jonathan Boyer",
     "email": "contact@grafikart.fr",
@@ -14,9 +17,12 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "ava": "^0.17.0"
+    "ava": "^0.24.0"
   },
   "dependencies": {
-    "hash-sum": "^1.0.2"
+    "hash-sum": "^1.0.2",
+    "vue-hot-reload-api": "^2.2.4",
+    "vue-template-compiler": "^2.5.9",
+    "vue-template-es2015-compiler": "^1.6.0"
   }
 }
