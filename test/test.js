@@ -1,7 +1,5 @@
 import test from 'ava';
 import loader from '../index.js'
-import tsLoader from 'ts-loader'
-import path from 'path'
 import fs from 'fs'
 
 let vueComponent = fs.readFileSync(__dirname + '/fixtures/ComponentDecorated.js', 'utf8')
