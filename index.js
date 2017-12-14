@@ -6,7 +6,7 @@ const cache = Object.create(null)
 module.exports = function (content) {
   this.cacheable()
   let isProduction = this.minimize || process.env.NODE_ENV === 'production'
-  let regex = new RegExp(/(\S+) = __decorate\(\[\s+Component/gi)
+  let regex = new RegExp(/(\S+) = __decorate\(\[[^\]]+Component\(/gi)
   let matches = regex.exec(content)
   if (matches !== null) {
     // Converts template to render functions
