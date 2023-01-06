@@ -20,7 +20,7 @@
     "uglifyjs-webpack-plugin": "^1.1.2",
     "vue": "^2.5.9",
     "vue-property-decorator": "^6.0.0",
-    "webpack": "^3.10.0",
+    "webpack": "^5.75.0",
     "webpack-dev-server": "^2.9.7"
   }
 }
