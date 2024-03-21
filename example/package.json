@@ -21,6 +21,6 @@
     "vue": "^2.5.9",
     "vue-property-decorator": "^6.0.0",
     "webpack": "^3.10.0",
-    "webpack-dev-server": "^2.9.7"
+    "webpack-dev-server": "^5.0.4"
   }
 }
